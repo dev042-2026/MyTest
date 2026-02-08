@@ -5,8 +5,8 @@ import Testing
 @Suite("Seconds clock convertion validation")
 struct SecondsClockConverterTests {
     
-    @Test(arguments: [0,2,12,24])
-    func secondsClockConverter_when_value_even(seconds: Int) {
+    @Test(arguments: [Seconds(0)!,Seconds(2)!])
+    func secondsClockConverter_when_value_even(seconds: Seconds) {
         //Arrange
         let sut = SecondsClockConverter()
         //Act
@@ -15,8 +15,8 @@ struct SecondsClockConverterTests {
         #expect(result == SecondsLamp.on)
     }
     
-    @Test(arguments: [1,3,15,45])
-    func secondsClockConverter_when_value_odd(seconds: Int) {
+    @Test(arguments: [Seconds(1)!,Seconds(45)!])
+    func secondsClockConverter_when_value_odd(seconds: Seconds) {
         //Arrange
         let sut = SecondsClockConverter()
         //Act

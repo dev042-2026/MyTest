@@ -4,9 +4,9 @@ import Foundation
 class SecondsClockConverter {
     
     
-    func convertSecondsClockToLamps(seconds: Int) -> SecondsLamp {
+    func convertSecondsClockToLamps(seconds: Seconds) -> SecondsLamp {
         
-        if (seconds % 2 == 0) {
+        if (seconds.value % 2 == 0) {
             return .on
         }
         return .off
