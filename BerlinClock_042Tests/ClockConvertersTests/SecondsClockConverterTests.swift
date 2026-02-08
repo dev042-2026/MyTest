@@ -14,4 +14,14 @@ struct SecondsClockConverterTests {
         //Assert
         #expect(result == SecondsLamp.on)
     }
+    
+    @Test(arguments: [1,3,15,45])
+    func secondsClockConverter_when_value_odd(seconds: Int) {
+        //Arrange
+        let sut = SecondsClockConverter()
+        //Act
+        let result = sut.convertSecondsClockToLamps(seconds: seconds)
+        //Assert
+        #expect(result == SecondsLamp.off)
+    }
 }
