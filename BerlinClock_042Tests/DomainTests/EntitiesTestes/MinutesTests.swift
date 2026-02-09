@@ -21,4 +21,12 @@ struct MinutesTests {
         //Assert
         #expect(result == nil)
     }
+    
+    @Test(arguments: [-1,-59, -70])
+    func validateMinutes_when_value_negative(minutes: Int) {
+        //Act
+        let result = Minutes(minutes)
+        //Assert
+        #expect(result == nil)
+    }
 }
