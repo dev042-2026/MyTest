@@ -13,3 +13,9 @@ enum OneHourLamp {
     case redColor
     case noColor
 }
+
+enum FiveMinuteLamp {
+    case redColor
+    case yellowColor
+    case noColor
+}
