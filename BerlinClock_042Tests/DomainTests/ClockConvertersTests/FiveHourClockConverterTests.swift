@@ -32,7 +32,7 @@ struct FiveHourClockConverterTests {
         //Act
         let result = fiveHoursConverter.convertToFiveHourLamp(hours: hours)
         //Assert
-        #expect(result == [.red, .noColor, .noColor, .noColor])
+        #expect(result == [.redColor, .noColor, .noColor, .noColor])
     }
     
     @Test(arguments: [FiveHour(10)!,FiveHour(14)!])
@@ -42,6 +42,6 @@ struct FiveHourClockConverterTests {
         //Act
         let result = fiveHoursConverter.convertToFiveHourLamp(hours: hours)
         //Assert
-        #expect(result == [.red, .red, .noColor, .noColor])
+        #expect(result == [.redColor, .redColor, .noColor, .noColor])
     }
 }

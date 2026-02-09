@@ -4,13 +4,9 @@ import Foundation
 class FiveHourClockConverter {
     
     func convertToFiveHourLamp(hours: FiveHour) -> [FiveHourLamp] {
-        if (hours.value / 5 < 1) {
-            return [.noColor, .noColor, .noColor, .noColor]
-        } else  if (hours.value / 5 < 2) {
-            return [.red, .noColor, .noColor, .noColor]
-        } else  if (hours.value / 5 < 3) {
-            return [.red, .red, .noColor, .noColor]
+        let lampsOn = hours.value / 5
+        return (0..<4).map {
+            $0 < lampsOn ? .redColor : .noColor
         }
-        return [.noColor, .noColor, .noColor, .noColor]
     }
 }
