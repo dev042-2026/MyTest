@@ -6,8 +6,8 @@ import Testing
 @Suite("Five Minute clock Conversion validation")
 struct FiveMinuteClockConverterTests {
     
-    @Test(arguments: [0, 30, 59])
-    func fiveMinuteClockConverter_Validate_LampCount(minutes: Int) {
+    @Test(arguments: [Minutes(0)!, Minutes(30)!, Minutes(59)!])
+    func fiveMinuteClockConverter_Validate_LampCount(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -16,8 +16,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result.count == 11)
     }
     
-    @Test(arguments: [0, 1, 4])
-    func fiveMinuteConverter_when_lessThanFive_allOff(minutes: Int) {
+    @Test(arguments: [Minutes(0)!, Minutes(1)!, Minutes(4)!])
+    func fiveMinuteConverter_when_lessThanFive_allOff(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -26,8 +26,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result == [.noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor])
     }
     
-    @Test(arguments: [5, 6, 9])
-    func fiveMinuteConverter_when_fiveToNine_oneLampOn(minutes: Int) {
+    @Test(arguments: [Minutes(5)!, Minutes(6)!, Minutes(9)!])
+    func fiveMinuteConverter_when_fiveToNine_oneLampOn(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -36,8 +36,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result == [.yellowColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor])
     }
     
-    @Test(arguments: [10, 12, 14])
-    func fiveMinuteConverter_when_tenToFourteen_twoLampsOn(minutes: Int) {
+    @Test(arguments: [Minutes(10)!, Minutes(12)!, Minutes(14)!])
+    func fiveMinuteConverter_when_tenToFourteen_twoLampsOn(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -46,8 +46,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result == [.yellowColor, .yellowColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor])
     }
     
-    @Test(arguments: [15, 17, 19])
-    func fiveMinuteConverter_when_fifteenToNineteen_threeLampsOn(minutes: Int) {
+    @Test(arguments: [Minutes(15)!, Minutes(17)!, Minutes(19)!])
+    func fiveMinuteConverter_when_fifteenToNineteen_threeLampsOn(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -56,8 +56,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result == [.yellowColor, .yellowColor, .redColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor])
     }
     
-    @Test(arguments: [30, 32, 34])
-    func fiveMinuteConverter_when_thirtyToThirtyFour_sixLampsOn(minutes: Int) {
+    @Test(arguments: [Minutes(30)!, Minutes(32)!, Minutes(34)!])
+    func fiveMinuteConverter_when_thirtyToThirtyFour_sixLampsOn(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -66,8 +66,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result == [.yellowColor, .yellowColor, .redColor, .yellowColor, .yellowColor, .redColor, .noColor, .noColor, .noColor, .noColor, .noColor])
     }
     
-    @Test(arguments: [45, 47, 49])
-    func fiveMinuteConverter_when_fortyFiveToFortyNine_nineLampsOn(minutes: Int) {
+    @Test(arguments: [Minutes(45)!, Minutes(47)!, Minutes(49)!])
+    func fiveMinuteConverter_when_fortyFiveToFortyNine_nineLampsOn(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
@@ -76,8 +76,8 @@ struct FiveMinuteClockConverterTests {
         #expect(result == [.yellowColor, .yellowColor, .redColor, .yellowColor, .yellowColor, .redColor, .yellowColor, .yellowColor, .redColor, .noColor, .noColor])
     }
     
-    @Test(arguments: [55, 57, 59])
-    func fiveMinuteConverter_when_fiftyFiveToFiftyNine_allLampsOn(minutes: Int) {
+    @Test(arguments: [Minutes(55)!, Minutes(57)!, Minutes(59)!])
+    func fiveMinuteConverter_when_fiftyFiveToFiftyNine_allLampsOn(minutes: Minutes) {
         //Arrange
         let fiveMinuteClockConverter = FiveMinuteClockConverter()
         //Act
