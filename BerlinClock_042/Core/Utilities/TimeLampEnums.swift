@@ -31,6 +31,14 @@ enum FiveMinuteLamp {
     case redColor
     case yellowColor
     case noColor
+    
+    var color: Color {
+        switch self {
+        case .yellowColor: return .yellow
+        case .redColor: return .red
+        case .noColor: return .gray
+        }
+    }
 }
 
 enum OneMinuteLamp {

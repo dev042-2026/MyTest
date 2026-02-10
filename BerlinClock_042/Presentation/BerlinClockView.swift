@@ -62,13 +62,13 @@ struct BerlinClockView: View {
             // Seconds lamp
             Circle()
                 .fill(berlinClockViewModel.secondsLamp.color)
-                .frame(width: 70, height: 70)
+                .frame(width: 30, height: 30)
             
             HStack {
                 ForEach(0..<berlinClockViewModel.fiveHourLamps.count, id: \.self) { index in
                     Circle()
                         .fill(berlinClockViewModel.fiveHourLamps[index].color)
-                        .frame(width: 70, height: 70)
+                        .frame(width: 30, height: 30)
                 }
             }
             
@@ -77,7 +77,16 @@ struct BerlinClockView: View {
                 ForEach(0..<berlinClockViewModel.oneHourLamps.count, id: \.self) { index in
                     Circle()
                         .fill(berlinClockViewModel.oneHourLamps[index].color)
-                        .frame(width: 70, height: 70)
+                        .frame(width: 30, height: 30)
+                }
+            }
+            
+            // Five minute row
+            HStack(spacing: 4) {
+                ForEach(0..<berlinClockViewModel.fiveMinuteLamps.count, id: \.self) { index in
+                    Circle()
+                        .fill(berlinClockViewModel.fiveMinuteLamps[index].color)
+                        .frame(width: 30, height: 30)
                 }
             }
             
