@@ -7,6 +7,7 @@ class BerlinClockViewModel {
     private let fiveHoursConverter = FiveHourClockConverter()
     private let oneHourClockConverter = OneHourClockConverter()
     private let fiveMinuteConverter = FiveMinuteClockConverter()
+    private let oneMinuteConverter = OneMinuteClockConverter()
     
     func secondsLampState(secondFieldData: Int) -> SecondsLamp {
         guard let seconds = Seconds(secondFieldData) else { return .off }
@@ -26,5 +27,10 @@ class BerlinClockViewModel {
     func fiveMinuteLampState(minuteFieldData: Int) -> [FiveMinuteLamp] {
         guard let minutes = Minutes(minuteFieldData) else { return [] }
         return fiveMinuteConverter.convertToFiveMinuteLamp(minutes: minutes)
+    }
+    
+    func oneMinuteLampState(minutesFieldData: Int) -> [OneMinuteLamp] {
+        guard let minutes = Minutes(minutesFieldData) else { return [] }
+        return oneMinuteConverter.convertToOneMinuteLamp(minutes: minutes)
     }
 }
