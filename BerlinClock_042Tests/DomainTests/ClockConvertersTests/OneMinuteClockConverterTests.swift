@@ -35,4 +35,14 @@ struct OneMinuteClockConverterTests {
         //Assert
         #expect(result == [.yellowColor, .noColor, .noColor, .noColor])
     }
+    
+    @Test(arguments: [Minutes(2)!, Minutes(7)!, Minutes(12)!, Minutes(57)!])
+    func oneMinuteConverter_when_twoLampsOn(minutes: Minutes) {
+        //Arrange
+        let oneMinuteClockConverter = OneMinuteClockConverter()
+        //Act
+        let result = oneMinuteClockConverter.convertToOneMinuteLamp(minutes: minutes)
+        //Assert
+        #expect(result == [.yellowColor, .yellowColor, .noColor, .noColor])
+    }
 }
