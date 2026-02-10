@@ -43,7 +43,13 @@ struct BerlinClockView: View {
                 
                 Spacer()
                 
-                Button("Display Berlin Clock") {}
+                Button("Display Berlin Clock") {
+                    let hours = Int(hoursInput) ?? 0
+                    let minutes = Int(minutesInput) ?? 0
+                    let seconds = Int(secondsInput) ?? 0
+                    berlinClockViewModel
+                        .convert(hours: hours, minutes: minutes, seconds: seconds)
+                }
                     .frame(width: 180, height: 50)
                     .border(Color.white, width: 1)
                     .buttonStyle(.borderedProminent)

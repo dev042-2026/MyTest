@@ -9,6 +9,21 @@ class BerlinClockViewModel: ObservableObject {
     private let fiveMinuteConverter = FiveMinuteClockConverter()
     private let oneMinuteConverter = OneMinuteClockConverter()
     
+    //state publishers
+    @Published var secondsLamp: SecondsLamp = .off
+    @Published var fiveHourLamps: [FiveHourLamp] = []
+    @Published var oneHourLamps: [OneHourLamp] = []
+    @Published var fiveMinuteLamps: [FiveMinuteLamp] = []
+    @Published var oneMinuteLamps: [OneMinuteLamp] = []
+    
+    func convert(hours: Int, minutes: Int, seconds: Int) {
+        secondsLamp = secondsLampState(secondFieldData: seconds)
+        fiveHourLamps = fiveHourLampState(hourFieldData: hours)
+        oneHourLamps = oneHourLampState(hourFieldData: hours)
+        fiveMinuteLamps = fiveMinuteLampState(minuteFieldData: minutes)
+        oneMinuteLamps = oneMinuteLampState(minuteFieldData: minutes)
+    }
+    
     func secondsLampState(secondFieldData: Int) -> SecondsLamp {
         guard let seconds = Seconds(secondFieldData) else { return .off }
         return secondsConverter.convertSecondsClockToLamps(seconds: seconds)
