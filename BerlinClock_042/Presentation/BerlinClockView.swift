@@ -11,7 +11,7 @@ struct BerlinClockView: View {
     
     var body: some View {
             
-        VStack(spacing: 50){
+        VStack(spacing: 20){
             
             Text("Berlin Clock")
                 .font(.title2)
@@ -58,6 +58,12 @@ struct BerlinClockView: View {
                             .fill(Color.blue))
             
             } .padding(.horizontal)
+            
+            // Seconds lamp
+            Circle()
+                .fill(berlinClockViewModel.secondsLamp.color)
+                .frame(width: 70, height: 70)
+            
             Spacer()
         }
     }

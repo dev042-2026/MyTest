@@ -1,7 +1,12 @@
+import SwiftUICore
 
 enum SecondsLamp {
     case on
     case off
+    
+    var color: Color {
+        self == .on ? .yellow : .gray
+    }
 }
 
 enum FiveHourLamp {
