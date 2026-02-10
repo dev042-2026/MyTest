@@ -72,6 +72,15 @@ struct BerlinClockView: View {
                 }
             }
             
+            // One hour row
+            HStack {
+                ForEach(0..<berlinClockViewModel.oneHourLamps.count, id: \.self) { index in
+                    Circle()
+                        .fill(berlinClockViewModel.oneHourLamps[index].color)
+                        .frame(width: 70, height: 70)
+                }
+            }
+            
             Spacer()
         }
     }
