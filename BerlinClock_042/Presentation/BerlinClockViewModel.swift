@@ -1,7 +1,7 @@
 
 import Foundation
 
-class BerlinClockViewModel {
+class BerlinClockViewModel: ObservableObject {
     
     private let secondsConverter = SecondsClockConverter()
     private let fiveHoursConverter = FiveHourClockConverter()
