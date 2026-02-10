@@ -29,8 +29,8 @@ class BerlinClockViewModel {
         return fiveMinuteConverter.convertToFiveMinuteLamp(minutes: minutes)
     }
     
-    func oneMinuteLampState(minutesFieldData: Int) -> [OneMinuteLamp] {
-        guard let minutes = Minutes(minutesFieldData) else { return [] }
+    func oneMinuteLampState(minuteFieldData: Int) -> [OneMinuteLamp] {
+        guard let minutes = Minutes(minuteFieldData) else { return [] }
         return oneMinuteConverter.convertToOneMinuteLamp(minutes: minutes)
     }
 }
