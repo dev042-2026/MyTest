@@ -37,4 +37,14 @@ struct BerlinClockViewModelTests {
         //Assert
         #expect(result == [.noColor, .noColor, .noColor, .noColor])
     }
+    
+    @Test
+    func viewModel_whenMinutesIsZero_fiveMinuteLampsAllOff() {
+        //Arrange
+        let sut = BerlinClockViewModel()
+        //Act
+        let result = sut.fiveMinuteLampState(minuteFieldData: 00)
+        //Assert
+        #expect(result == [.noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor, .noColor])
+    }
 }
