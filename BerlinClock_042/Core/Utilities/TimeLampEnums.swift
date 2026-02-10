@@ -12,6 +12,10 @@ enum SecondsLamp {
 enum FiveHourLamp {
     case redColor
     case noColor
+    
+    var color: Color {
+        self == .redColor ? .red : .gray
+    }
 }
 
 enum OneHourLamp {
