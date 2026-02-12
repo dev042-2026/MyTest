@@ -46,5 +46,11 @@ struct BerlinCustomClockView: View {
             }
         }
         .padding(.horizontal)
+        
+        .alert("Error", isPresented: .constant(berlinClockViewModel.errorMessage != nil)) {
+            Button("OK") { berlinClockViewModel.errorMessage = nil }
+        } message: {
+            Text(berlinClockViewModel.errorMessage ?? "")
+        }
     }
 }
