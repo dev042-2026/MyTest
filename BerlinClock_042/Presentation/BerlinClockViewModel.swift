@@ -16,6 +16,12 @@ class BerlinClockViewModel: ObservableObject {
     @Published var fiveMinuteLamps: [FiveMinuteLamp] = []
     @Published var oneMinuteLamps: [OneMinuteLamp] = []
     
+    private let timeProvider: TimeProviderProtocol
+    
+    init(timeProvider: TimeProviderProtocol = TimeProvider()) {
+        self.timeProvider = timeProvider
+    }
+    
     func convert(hours: Int, minutes: Int, seconds: Int) {
         secondsLamp = secondsLampState(secondFieldData: seconds)
         fiveHourLamps = fiveHourLampState(hourFieldData: hours)
@@ -47,5 +53,10 @@ class BerlinClockViewModel: ObservableObject {
     func oneMinuteLampState(minuteFieldData: Int) -> [OneMinuteLamp] {
         guard let minutes = Minutes(minuteFieldData) else { return [] }
         return oneMinuteConverter.convertToOneMinuteLamp(minutes: minutes)
+    }
+    
+    func updateFromSystemTime() {
+        let time = timeProvider.getSystemTime()
+        convert(hours: time.hour, minutes: time.minute, seconds: time.second)
     }
 }
