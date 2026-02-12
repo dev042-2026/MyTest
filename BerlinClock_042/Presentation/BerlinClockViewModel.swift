@@ -92,6 +92,10 @@ class BerlinClockViewModel: ObservableObject {
             errorMessage = "Invalid hour (0-23)"
             return false
         }
+        guard Minutes(minutes) != nil else {
+            errorMessage = "Invalid minute (0-59)"
+            return false
+        }
         
         errorMessage = nil
         return true

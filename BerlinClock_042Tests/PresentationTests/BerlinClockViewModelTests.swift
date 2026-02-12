@@ -156,5 +156,15 @@ struct BerlingClockViewModel_ErrorTests {
         #expect(sut.errorMessage == "Invalid hour (0-23)")
     }
     
+    @Test func viewModel_convert_invalidMinute_setsError() {
+        // Arrange
+        let mockProvider = MockTimeProvider()
+        //Act
+        let sut = BerlinClockViewModel(timeProvider: mockProvider)
+        sut.convert(hours: 23, minutes: 62, seconds: 0)
+        //Assert
+        #expect(sut.errorMessage == "Invalid minute (0-59)")
+    }
+    
 }
 
