@@ -18,13 +18,25 @@ class BerlinClockViewModel: ObservableObject {
     
     private let timeProvider: TimeProviderProtocol
     @Published var isLiveMode: Bool = true
+    private var timer: Timer?
     
     init(timeProvider: TimeProviderProtocol = TimeProvider()) {
         self.timeProvider = timeProvider
+        startLiveMode()
     }
     
     func stopLiveMode() {
         isLiveMode = false
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func startLiveMode() {
+        isLiveMode = true
+        updateFromSystemTime()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.updateFromSystemTime()
+        }
     }
     
     func convert(hours: Int, minutes: Int, seconds: Int) {

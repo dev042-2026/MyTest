@@ -118,4 +118,17 @@ struct BerlinClockViewModel_LiveTests {
         //Assert
         #expect(sut.isLiveMode == false)
     }
+    
+    @Test func viewModel_startLiveMode_setsToTrue() {
+        // Arrange
+        let mockProvider = MockTimeProvider()
+        // Act
+        let sut = BerlinClockViewModel(timeProvider: mockProvider)
+    
+        sut.stopLiveMode()
+        sut.startLiveMode()
+        //Assert
+        #expect(sut.isLiveMode == true)
+    }
+    
 }
