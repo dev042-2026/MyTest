@@ -1,6 +1,6 @@
 import Foundation
 
-class TimeProvider {
+class TimeProvider: TimeProviderProtocol {
     
     func getSystemTime() -> Time {
         let now = Date()
