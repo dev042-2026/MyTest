@@ -22,15 +22,24 @@ struct BerlinClockView: View {
                 .foregroundColor(.white)
             
             // Live Clock Section
-            BerlinLiveClockView(berlinClockViewModel: berlinClockViewModel)
+            BerlinLiveClockView(berlinClockViewModel: berlinClockViewModel, onStart: resetFields)
             
             Divider()
                 .padding(.vertical, 5)
             
             // Custom Clock Section
-            BerlinCustomClockView(berlinClockViewModel: berlinClockViewModel)
+            BerlinCustomClockView(berlinClockViewModel: berlinClockViewModel,
+                                  hoursInput: $hoursInput,
+                                  minutesInput: $minutesInput,
+                                  secondsInput: $secondsInput)
             Spacer()
         }
+    }
+    
+    private func resetFields() {
+        hoursInput = ""
+        minutesInput = ""
+        secondsInput = ""
     }
 }
 

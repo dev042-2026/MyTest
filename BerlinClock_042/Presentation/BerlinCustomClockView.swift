@@ -5,9 +5,9 @@ struct BerlinCustomClockView: View {
     
     @ObservedObject var berlinClockViewModel: BerlinClockViewModel
     
-    @State private var hoursInput: String = ""
-    @State private var minutesInput: String = ""
-    @State private var secondsInput: String = ""
+    @Binding var hoursInput: String
+    @Binding var minutesInput: String
+    @Binding var secondsInput: String
     
     var body: some View {
         VStack(spacing: 25) {

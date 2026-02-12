@@ -4,6 +4,7 @@ import SwiftUI
 struct BerlinLiveClockView: View {
     
     @ObservedObject var berlinClockViewModel: BerlinClockViewModel
+    var onStart: (() -> Void)? = nil
     
     var body: some View {
         VStack(spacing: 30) {
@@ -55,6 +56,7 @@ struct BerlinLiveClockView: View {
                     berlinClockViewModel.stopLiveMode()
                 } else {
                     berlinClockViewModel.startLiveMode()
+                    onStart?() 
                 }
             }
             .frame(width: 250, height: 60)
