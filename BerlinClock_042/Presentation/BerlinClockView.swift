@@ -10,7 +10,7 @@ struct BerlinClockView: View {
     @State private var secondsInput: String = ""
     
     var body: some View {
-            
+        
         VStack(spacing: 20){
             
             Text("Berlin Clock")
@@ -21,84 +21,14 @@ struct BerlinClockView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
             
-            HStack(spacing: 10) {
-                
-                TextField("HH", text: $hoursInput)
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .border(Color.gray, width: 1)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                
-                TextField("MM", text: $minutesInput)
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .border(Color.gray, width: 1)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                
-                TextField("SS", text: $secondsInput)
-                    .frame(width: 50, height: 50)
-                    .border(Color.gray, width: 1)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                
-                Spacer()
-                
-                Button("Display Berlin Clock") {
-                    let hours = Int(hoursInput) ?? 0
-                    let minutes = Int(minutesInput) ?? 0
-                    let seconds = Int(secondsInput) ?? 0
-                    berlinClockViewModel
-                        .convert(hours: hours, minutes: minutes, seconds: seconds)
-                }
-                    .frame(width: 180, height: 50)
-                    .border(Color.white, width: 1)
-                    .buttonStyle(.borderedProminent)
-                    .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.blue))
+            // Live Clock Section
+            BerlinLiveClockView(berlinClockViewModel: berlinClockViewModel)
             
-            } .padding(.horizontal)
+            Divider()
+                .padding(.vertical, 5)
             
-            // Seconds lamp
-            Circle()
-                .fill(berlinClockViewModel.secondsLamp.color)
-                .frame(width: 30, height: 30)
-            
-            HStack {
-                ForEach(0..<berlinClockViewModel.fiveHourLamps.count, id: \.self) { index in
-                    Circle()
-                        .fill(berlinClockViewModel.fiveHourLamps[index].color)
-                        .frame(width: 30, height: 30)
-                }
-            }
-            
-            // One hour row
-            HStack {
-                ForEach(0..<berlinClockViewModel.oneHourLamps.count, id: \.self) { index in
-                    Circle()
-                        .fill(berlinClockViewModel.oneHourLamps[index].color)
-                        .frame(width: 30, height: 30)
-                }
-            }
-            
-            // Five minute row
-            HStack(spacing: 4) {
-                ForEach(0..<berlinClockViewModel.fiveMinuteLamps.count, id: \.self) { index in
-                    Circle()
-                        .fill(berlinClockViewModel.fiveMinuteLamps[index].color)
-                        .frame(width: 30, height: 30)
-                }
-            }
-            
-            // One minute row
-            HStack {
-                ForEach(0..<berlinClockViewModel.oneMinuteLamps.count, id: \.self) { index in
-                    Circle()
-                        .fill(berlinClockViewModel.oneMinuteLamps[index].color)
-                        .frame(width: 30, height: 30)
-                }
-            }
-            
+            // Custom Clock Section
+            BerlinCustomClockView(berlinClockViewModel: berlinClockViewModel)
             Spacer()
         }
     }
