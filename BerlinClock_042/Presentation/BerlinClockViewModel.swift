@@ -89,15 +89,15 @@ class BerlinClockViewModel: ObservableObject {
     
     private func validateTime(hours: Int, minutes: Int, seconds: Int) -> Bool {
         guard Hour(hours) != nil else {
-            errorMessage = "Invalid hour (0-23)"
+            errorMessage = BerlinClockConstants.TimeRange.ErrorMessage.invalidHour
             return false
         }
         guard Minutes(minutes) != nil else {
-            errorMessage = "Invalid minute (0-59)"
+            errorMessage = BerlinClockConstants.TimeRange.ErrorMessage.invalidMinute
             return false
         }
         guard Seconds(seconds) != nil else {
-            errorMessage = "Invalid second (0-59)"
+            errorMessage = BerlinClockConstants.TimeRange.ErrorMessage.invalidSecond
             return false
         }
         
