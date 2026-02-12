@@ -169,11 +169,21 @@ struct BerlingClockViewModel_ErrorTests {
     @Test func viewModel_convert_invalidSecond_setsError() {
         // Arrange
         let mockProvider = MockTimeProvider()
+        //Act
         let sut = BerlinClockViewModel(timeProvider: mockProvider)
         sut.convert(hours: 12, minutes: 30, seconds: 99)
         //Assert
         #expect(sut.errorMessage == "Invalid second (0-59)")
     }
     
+    @Test func viewModel_convert_nonNumericInput_setsError() {
+        // Arrange
+        let mockProvider = MockTimeProvider()
+        //Act
+        let sut = BerlinClockViewModel(timeProvider: mockProvider)
+        sut.convert(hoursText: "abc", minutesText: "abc", secondsText: "abc")
+        //Assert
+        #expect(sut.errorMessage == "Please enter numbers only")
+    }
 }
 

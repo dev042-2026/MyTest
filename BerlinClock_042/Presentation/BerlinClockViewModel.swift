@@ -41,6 +41,16 @@ class BerlinClockViewModel: ObservableObject {
         }
     }
     
+    func convert(hoursText: String, minutesText: String, secondsText: String) {
+        guard let hours = Int(hoursText),
+              let minutes = Int(minutesText),
+              let seconds = Int(secondsText) else {
+            errorMessage = BerlinClockConstants.TimeRange.ErrorMessage.nonNumericInput
+            return
+        }
+        convert(hours: hours, minutes: minutes, seconds: seconds)
+    }
+    
     func convert(hours: Int, minutes: Int, seconds: Int) {
         guard validateTime(hours: hours, minutes: minutes, seconds: seconds) else {
                 return

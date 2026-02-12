@@ -20,6 +20,7 @@ enum BerlinClockConstants {
             static let invalidHour = "Invalid hour (0-23)"
             static let invalidMinute = "Invalid minute (0-59)"
             static let invalidSecond = "Invalid second (0-59)"
+            static let nonNumericInput = "Please enter numbers only" 
         }
     }
 

@@ -36,10 +36,11 @@ struct BerlinCustomClockView: View {
                 
                 Spacer()
                 Button("Display") {
-                    let hours = Int(hoursInput) ?? 0
-                    let minutes = Int(minutesInput) ?? 0
-                    let seconds = Int(secondsInput) ?? 0
-                    berlinClockViewModel.convert(hours: hours, minutes: minutes, seconds: seconds)
+                    berlinClockViewModel.convert(
+                        hoursText: hoursInput,
+                        minutesText: minutesInput,
+                        secondsText: secondsInput
+                    )
                 }
                 .buttonStyle(.borderedProminent)
                 .frame(width: 150, height: 50)
