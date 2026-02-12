@@ -23,6 +23,10 @@ class BerlinClockViewModel: ObservableObject {
         self.timeProvider = timeProvider
     }
     
+    func stopLiveMode() {
+        isLiveMode = false
+    }
+    
     func convert(hours: Int, minutes: Int, seconds: Int) {
         secondsLamp = secondsLampState(secondFieldData: seconds)
         fiveHourLamps = fiveHourLampState(hourFieldData: hours)
