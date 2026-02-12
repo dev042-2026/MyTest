@@ -131,4 +131,14 @@ struct BerlinClockViewModel_LiveTests {
         #expect(sut.isLiveMode == true)
     }
     
+    @Test func viewModel_convert_stopsLiveMode() {
+        //Arrange
+        let mockProvider = MockTimeProvider()
+        // Act
+        let sut = BerlinClockViewModel(timeProvider: mockProvider)
+        sut.convert(hours: 12, minutes: 30, seconds: 0)
+        //Assert
+        #expect(sut.isLiveMode == false)
+    }
+    
 }

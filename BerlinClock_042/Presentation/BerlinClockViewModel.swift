@@ -40,6 +40,11 @@ class BerlinClockViewModel: ObservableObject {
     }
     
     func convert(hours: Int, minutes: Int, seconds: Int) {
+        stopLiveMode()
+        convertInternal(hours: hours, minutes: minutes, seconds: seconds)
+    }
+    
+    private func convertInternal(hours: Int, minutes: Int, seconds: Int) {
         secondsLamp = secondsLampState(secondFieldData: seconds)
         fiveHourLamps = fiveHourLampState(hourFieldData: hours)
         oneHourLamps = oneHourLampState(hourFieldData: hours)
@@ -74,6 +79,6 @@ class BerlinClockViewModel: ObservableObject {
     
     func updateFromSystemTime() {
         let time = timeProvider.getSystemTime()
-        convert(hours: time.hour, minutes: time.minute, seconds: time.second)
+        convertInternal(hours: time.hour, minutes: time.minute, seconds: time.second)
     }
 }
