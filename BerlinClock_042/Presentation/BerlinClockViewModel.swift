@@ -20,6 +20,8 @@ class BerlinClockViewModel: ObservableObject {
     @Published var isLiveMode: Bool = true
     private var timer: Timer?
     
+    @Published var errorMessage: String? = nil
+    
     init(timeProvider: TimeProviderProtocol = TimeProvider()) {
         self.timeProvider = timeProvider
         startLiveMode()
@@ -40,6 +42,9 @@ class BerlinClockViewModel: ObservableObject {
     }
     
     func convert(hours: Int, minutes: Int, seconds: Int) {
+        guard validateTime(hours: hours, minutes: minutes, seconds: seconds) else {
+                return
+            }
         stopLiveMode()
         convertInternal(hours: hours, minutes: minutes, seconds: seconds)
     }
@@ -80,5 +85,15 @@ class BerlinClockViewModel: ObservableObject {
     func updateFromSystemTime() {
         let time = timeProvider.getSystemTime()
         convertInternal(hours: time.hour, minutes: time.minute, seconds: time.second)
+    }
+    
+    private func validateTime(hours: Int, minutes: Int, seconds: Int) -> Bool {
+        guard Hour(hours) != nil else {
+            errorMessage = "Invalid hour (0-23)"
+            return false
+        }
+        
+        errorMessage = nil
+        return true
     }
 }

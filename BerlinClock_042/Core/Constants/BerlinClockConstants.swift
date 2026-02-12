@@ -15,6 +15,12 @@ enum BerlinClockConstants {
         static let hours = 0...23
         static let minutes = 0...59
         static let seconds = 0...59
+        
+        enum ErrorMessage {
+            static let invalidHour = "Invalid hour (0-23)"
+            static let invalidMinute = "Invalid minute (0-59)"
+            static let invalidSecond = "Invalid second (0-59)"
+        }
     }
 
     static let timerInterval: TimeInterval = 1.0
