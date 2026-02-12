@@ -96,3 +96,16 @@ struct BerlinClockViewModelTests {
         #expect(sut.oneHourLamps == [.redColor, .redColor, .redColor, .noColor])
     }
 }
+
+@Suite("Berlin Live Clock ViewModel Validations")
+struct BerlinClockViewModel_LiveTests {
+    
+    @Test func viewModel_isLiveMode_defaultsToTrue() {
+        // Arrange
+        let mockProvider = MockTimeProvider()
+        //Act
+        let sut = BerlinClockViewModel(timeProvider: mockProvider)
+        //Assert
+        #expect(sut.isLiveMode == true)
+    }
+}

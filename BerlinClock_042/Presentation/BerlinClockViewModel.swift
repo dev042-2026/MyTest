@@ -17,6 +17,7 @@ class BerlinClockViewModel: ObservableObject {
     @Published var oneMinuteLamps: [OneMinuteLamp] = []
     
     private let timeProvider: TimeProviderProtocol
+    @Published var isLiveMode: Bool = true
     
     init(timeProvider: TimeProviderProtocol = TimeProvider()) {
         self.timeProvider = timeProvider
