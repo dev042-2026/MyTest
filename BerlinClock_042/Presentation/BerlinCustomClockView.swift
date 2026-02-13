@@ -9,6 +9,8 @@ struct BerlinCustomClockView: View {
     @Binding var minutesInput: String
     @Binding var secondsInput: String
     
+    @FocusState private var isInputFocused: Bool
+    
     var body: some View {
         VStack(spacing: 25) {
             
@@ -21,18 +23,21 @@ struct BerlinCustomClockView: View {
                     .border(Color.gray, width: 1)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
+                    .focused($isInputFocused)
                 
                 TextField("MM", text: $minutesInput)
                     .frame(width: 50, height: 50)
                     .border(Color.gray, width: 1)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
+                    .focused($isInputFocused)
                 
                 TextField("SS", text: $secondsInput)
                     .frame(width: 50, height: 50)
                     .border(Color.gray, width: 1)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
+                    .focused($isInputFocused)
                 
                 Spacer()
                 Button("Display") {
@@ -47,6 +52,14 @@ struct BerlinCustomClockView: View {
             }
         }
         .padding(.horizontal)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    isInputFocused = false
+                }
+            }
+        }
         
         .alert("Error", isPresented: .constant(berlinClockViewModel.errorMessage != nil)) {
             Button("OK") { berlinClockViewModel.errorMessage = nil }
