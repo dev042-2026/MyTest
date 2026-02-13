@@ -34,7 +34,7 @@ Press `Cmd + U` to run all unit tests.
 ### Live Clock
 The app launches with a live Berlin Clock that updates every second using the device's system time. Users can pause and resume the clock using the Start/Stop button.
 
-![Berlin Clock App](Screenshots/live.png)
+![Berlin Clock App](Screenshots/Live.png)
 
 ### Custom Time Tester
 Below the clock, users can enter any time manually to see how it appears on the Berlin Clock. This is useful for testing and understanding how the clock works. The app validates input and shows error messages for invalid values.
